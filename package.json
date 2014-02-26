@@ -1,0 +1,27 @@
+{
+	"name": "discourse-sso",
+	"preferGlobal": false,
+	"version": "1.0.0",
+	"author": "Johan Jatko <johan@pie-studios.com>",
+	"description": "Single-sign-on helper package for Discourse",
+	"contributors": [
+		{
+			"name": "Johan Jatko",
+			"email": "johan@pie-studios.com"
+		}
+	],
+	"scripts": {
+		"test": "node test.js"
+	},
+	"main": "./index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ArmedGuy/discourse_sso_node"
+	},
+	"keywords": [
+		"discourse",
+		"sso",
+		"login",
+		"helper package"
+	]
+}
