@@ -1,7 +1,7 @@
 {
 	"name": "discourse-sso",
 	"preferGlobal": false,
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "Johan Jatko <johan@pie-studios.com>",
 	"description": "Single-sign-on helper package for Discourse",
 	"contributors": [
