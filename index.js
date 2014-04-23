@@ -36,7 +36,7 @@ var crypto 		= require("crypto"),
 		if(!("external_id" in params)) {
 			throw new Exception("Missing required parameter 'external_id'");
 		}
-		if(!("email" in params)) {
+		if(!("nonce" in params)) {
 			throw new Exception("Missing required parameter 'nonce'");
 		}
 		if(!("email" in params)) {
