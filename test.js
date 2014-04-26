@@ -1,5 +1,4 @@
-var discourse_sso = require("./index.js");
-var sso = new discourse_sso("much secret, very wow");
+var sso = require("./index.js")("much secret, very wow");
 
 var payload = "bm9uY2U9dmVyeV93b3dfbXVjaF9iYXNlNjRfc29fcXVlcnk=";
 var sig = "6648376284f212b08cc66f18fc8a8f188bcf16072944add79be71939a3c8b218";
