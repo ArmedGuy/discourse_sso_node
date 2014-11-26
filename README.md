@@ -45,3 +45,7 @@ var userparams = {
 };
 var q = sso.buildLoginString(userparams);
 ```
+
+## License
+
+MIT
