@@ -33,7 +33,7 @@ var nonce = sso.getNonce(payload);
 ```
 
 
-At last, to produce the query string that is to be sent back to Discourse, do:
+Then, to produce the query string that is to be sent back to Discourse, do:
 ```javascript
 var userparams = {
 	// Required, will throw exception otherwise
@@ -45,6 +45,11 @@ var userparams = {
 	"name": "some real name"
 };
 var q = sso.buildLoginString(userparams);
+```
+
+Lastly, to complete the login process, redirect back to Discourse with the query string. For example:
+```javascript
+res.redirect('http://discourse.example.com/session/sso_login?' + q);
 ```
 
 ## License
