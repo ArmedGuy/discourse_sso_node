@@ -1,7 +1,7 @@
 # Single-sign-on for Discourse via Node.js
 [![Build Status](https://travis-ci.org/ArmedGuy/discourse_sso_node.png?branch=master)](https://travis-ci.org/ArmedGuy/discourse_sso_node)
 
-Also available for PHP [here](https://github.com/ArmedGuy/discourse_sso_node).
+Also available for PHP [here](https://github.com/cviebrock/discourse-php).
 
 This is a small class to help with providing an SSO source for Discourse forums.
 It provides 3 help functions for validating incoming requests, extracting nonce, and building the returning queryString.
