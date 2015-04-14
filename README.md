@@ -4,7 +4,7 @@
 Also available for PHP [here](https://github.com/cviebrock/discourse-php).
 
 This is a small class to help with providing an SSO source for Discourse forums.
-It provides 3 help functions for validating incoming requests, extracting nonce, and building the returning queryString.
+It provides three helper functions for validating incoming requests, extracting the nonce, and building the returning queryString.
 
 For more information on the SSO settings in Discourse, visit <https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045>
 
@@ -17,6 +17,7 @@ var discourse_sso = require('discourse-sso');
 var sso = new discourse_sso("-your-sso_secret-goes-here-");
 ```
 
+
 To validate incoming logins, you can do:
 ```javascript
 var payload = ... // fetch from incoming request
@@ -26,13 +27,13 @@ if(sso.validate(payload, sig)) {
 ```
 
 
-To extract the nonce(the little piece of data that identifies the login, read more in the above link), use:
+To extract the [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (the little piece of data that identifies the login), use:
 ```javascript
 var nonce = sso.getNonce(payload);
 ```
 
 
-At last, to produce the query string that is to be sent back to discourse, do:
+At last, to produce the query string that is to be sent back to Discourse, do:
 ```javascript
 var userparams = {
 	// Required, will throw exception otherwise
