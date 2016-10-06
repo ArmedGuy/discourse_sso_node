@@ -32,6 +32,17 @@ var crypto 		= require("crypto"),
 		}
 	}
 	
+	discourse_sso.prototype.getReturnUrl = function(payload) {
+		var q = querystring.parse(
+			new Buffer( querystring.unescape(payload) , 'base64').toString()
+		);
+		if("return_sso_url" in q) {
+			return q["return_sso_url"];
+		} else {
+			throw new Exception("Missing return_sso_url in payload!");
+		}
+	}
+	
 	discourse_sso.prototype.buildLoginString = function(params) {
 		if(!("external_id" in params)) {
 			throw new Exception("Missing required parameter 'external_id'");
