@@ -1,57 +1,41 @@
+"use strict";
 var crypto 		= require("crypto"),
 	querystring = require("querystring");
 
-(function() {
-	"use strict";
-	var discourse_sso = function(secret) {
-		this.sso_secret = secret;
-	}
-	
-	discourse_sso.prototype.getHmac = function() {
-		return crypto.createHmac("sha256", this.sso_secret);
-	}
-	
-	discourse_sso.prototype.validate = function(payload, sig) {
+var ssoSecret;
+
+var discourseSSO = {
+	getHmac: function() {
+		return crypto.createHmac("sha256", ssoSecret);
+	},
+	validate: function(payload, sig) {
 		var hmac = this.getHmac();
 		hmac.update(querystring.unescape(payload));
-		if(hmac.digest("hex") === sig) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	discourse_sso.prototype.getNonce = function(payload) {
-		var q = querystring.parse(
-			new Buffer( querystring.unescape(payload) , 'base64').toString()
-		);
-		if("nonce" in q) {
-			return q["nonce"];
+		return hmac.digest("hex") === sig;
+	},
+	getNonce: function(payload) {
+		var q = querystring.parse(new Buffer( querystring.unescape(payload) , 'base64').toString());
+		if (q.nonce) {
+			return q.nonce;
 		} else {
 			throw new Exception("Missing Nonce in payload!");
 		}
-	}
-	
-	discourse_sso.prototype.buildLoginString = function(params) {
-		if(!("external_id" in params)) {
-			throw new Exception("Missing required parameter 'external_id'");
-		}
-		if(!("nonce" in params)) {
-			throw new Exception("Missing required parameter 'nonce'");
-		}
-		if(!("email" in params)) {
-			throw new Exception("Missing required parameter 'email'");
-		}
-		
+	},
+	buildLoginString: function(params) {
+		["external_id", "email", "nonce"].forEach(function(param){
+			if(!params.hasOwnProperty(param)){
+				throw new Exception('Missing required parameter: ' + param)
+			}
+		});
 		var payload = new Buffer( querystring.stringify(params) , 'utf8').toString("base64");
-		var hmac = this.getHmac();
-		hmac.update(payload);
-		
 		return querystring.stringify({
-			'sso': payload,
-			'sig': hmac.digest('hex')
+			sso: payload,
+			sig: this.getHmac().update(payload).digest('hex')
 		});
 	}
-	
-	module.exports = discourse_sso;
-})();
+};
+
+module.exports = function(secret) {
+	ssoSecret = secret;
+	return discourseSSO;
+};
