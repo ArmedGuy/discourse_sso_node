@@ -28,19 +28,19 @@ var crypto 		= require("crypto"),
 		if("nonce" in q) {
 			return q["nonce"];
 		} else {
-			throw new Exception("Missing Nonce in payload!");
+			throw new Error("Missing Nonce in payload!");
 		}
 	}
 	
 	discourse_sso.prototype.buildLoginString = function(params) {
 		if(!("external_id" in params)) {
-			throw new Exception("Missing required parameter 'external_id'");
+			throw new Error("Missing required parameter 'external_id'");
 		}
 		if(!("nonce" in params)) {
-			throw new Exception("Missing required parameter 'nonce'");
+			throw new Error("Missing required parameter 'nonce'");
 		}
 		if(!("email" in params)) {
-			throw new Exception("Missing required parameter 'email'");
+			throw new Error("Missing required parameter 'email'");
 		}
 		
 		var payload = new Buffer( querystring.stringify(params) , 'utf8').toString("base64");
