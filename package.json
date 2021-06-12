@@ -1,7 +1,7 @@
 {
 	"name": "discourse-sso",
 	"preferGlobal": false,
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"author": "Johan Jatko <johan.jatko@outlook.com>",
 	"description": "Single-sign-on helper package for Discourse",
 	"license" : "MIT",

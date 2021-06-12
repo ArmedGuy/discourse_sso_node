@@ -1,5 +1,5 @@
 # Single-sign-on for Discourse via Node.js
-[![Build Status](https://travis-ci.org/ArmedGuy/discourse_sso_node.png?branch=master)](https://travis-ci.org/ArmedGuy/discourse_sso_node)
+[![Node.js CI](https://github.com/ArmedGuy/discourse_sso_node/actions/workflows/nodejs.yaml/badge.svg)](https://github.com/ArmedGuy/discourse_sso_node/actions/workflows/nodejs.yaml)
 
 Also available for PHP [here](https://github.com/cviebrock/discourse-php).
 
