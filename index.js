@@ -23,7 +23,7 @@ var crypto 		= require("crypto"),
 	
 	discourse_sso.prototype.getNonce = function(payload) {
 		var q = querystring.parse(
-			new Buffer( querystring.unescape(payload) , 'base64').toString()
+			Buffer.from( querystring.unescape(payload) , 'base64').toString()
 		);
 		if("nonce" in q) {
 			return q["nonce"];
@@ -43,7 +43,7 @@ var crypto 		= require("crypto"),
 			throw new Error("Missing required parameter 'email'");
 		}
 		
-		var payload = new Buffer( querystring.stringify(params) , 'utf8').toString("base64");
+		var payload = Buffer.from( querystring.stringify(params) , 'utf8').toString("base64");
 		var hmac = this.getHmac();
 		hmac.update(payload);
 		

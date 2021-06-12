@@ -1,14 +1,14 @@
 {
 	"name": "discourse-sso",
 	"preferGlobal": false,
-	"version": "1.0.3",
-	"author": "Johan Jatko <johan@re3.io>",
+	"version": "1.0.4",
+	"author": "Johan Jatko <johan.jatko@outlook.com>",
 	"description": "Single-sign-on helper package for Discourse",
 	"license" : "MIT",
 	"contributors": [
 		{
 			"name": "Johan Jatko",
-			"email": "johan@re3.io"
+			"email": "johan.jatko@outlook.com"
 		}
 	],
 	"scripts": {
